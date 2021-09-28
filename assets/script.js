@@ -18,14 +18,16 @@ $('#searchButton').on('click', function(){
     localStorage.setItem('searchedCity', JSON.stringify(input));
     city = input;
     weatherData(city);
+    limitList();
 })
 
 // Init Function to hide Dashboard
-function Init(){
-    $('#dashboard').style.display = none;
-}
+// function Init(){
+//     document.querySelector('#dashboard').style.display = 'none';
+// }
 
 function storeCity(currentCityName){
+    cityArray = JSON.parse(localStorage.getItem('storedCities'))
     if (cityArray == null) {
         cityArray = [currentCityName];
     } else {
@@ -35,19 +37,21 @@ function storeCity(currentCityName){
 }
 
 function limitList(){
+    debugger
+    cityArray = JSON.parse(localStorage.getItem('storedCities'));
     if (cityArray != null){
-        while (cityArray.length > 8){
+        if (cityArray.length >= 8){
             cityArray.pop()
         }
     }
-    if (cityArray == null){
+    // if (cityArray == null){
         for (i = 0; i < cityArray.length; i++){
             var searchedList = $('#cityList');
             var storedCities = JSON.parse(localStorage.getItem(storedCities))
             storedCities.appendTo(searchedList); 
         }
     }
-}
+// }
 
 // Dashboard display
 
@@ -123,4 +127,6 @@ function forecastWeatherData(lat, lon){
         uviChange(Response);
     })
 }
+
+// Init();
 
