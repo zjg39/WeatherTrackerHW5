@@ -1,5 +1,4 @@
 // Weather Variables for Dashboard
-
 var lat;
 var lon;
 var currentCityTemp;
@@ -8,12 +7,9 @@ var currentCityWind;
 var currentCityUV;
 var currentCityName;
 
-
 // Variables for Five Day Forecast Function
-
 var card = $('.tomorrowCard');
-
-
+var cityArray = [];
 var APIKey = "9ce830acb4690b2eac28a095177620df";
 
 var chosenCity = JSON.parse(localStorage.getItem('searchedCity'));
@@ -24,20 +20,34 @@ $('#searchButton').on('click', function(){
     weatherData(city);
 })
 
+// Init Function to hide Dashboard
+function Init(){
+    $('#dashboard').style.display = none;
+}
 
 function storeCity(currentCityName){
     if (cityArray == null) {
         cityArray = [currentCityName];
     } else {
         cityArray.unshift(currentCityName);
-    } localStorage.setItem('arrayCity', JSON.stringify(cityArray))
+    } localStorage.setItem('storedCities', JSON.stringify(cityArray))
     console.log(cityArray);
+}
+
+function limitList(){
+    if (cityArray != null){
+        while (cityArray.length > 8){
+            cityArray.pop()
+        }
     }
-
-
-
-
-
+    if (cityArray == null){
+        for (i = 0; i < cityArray.length; i++){
+            var searchedList = $('#cityList');
+            var storedCities = JSON.parse(localStorage.getItem(storedCities))
+            storedCities.appendTo(searchedList); 
+        }
+    }
+}
 
 // Dashboard display
 
@@ -56,7 +66,6 @@ function pullLatLonData(l){
     storeCity(currentCityName);
 }
 
-
 // UVI for Dashboard 
 
 function uviChange(change){
@@ -67,7 +76,6 @@ function uviChange(change){
     $('#currentUV').text(currentCityUV);
     fiveDayForecast(change);
 }
-
 
 // 5-Day Forecast Data
 
@@ -115,3 +123,4 @@ function forecastWeatherData(lat, lon){
         uviChange(Response);
     })
 }
+
