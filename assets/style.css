@@ -42,3 +42,42 @@
     border-radius: 5px;
     margin: auto;
 }
+
+#dashboard {
+    border: solid black 2px;
+    margin-top: 40px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#card1{
+    background-color: cadetblue;
+    padding: 5px;
+    margin: 10px;
+}
+
+#card2{
+    background-color: cadetblue;
+    padding: 5px;
+    margin: 10px;
+}
+
+#card3{
+    background-color: cadetblue;
+    padding: 5px;
+    margin: 10px;
+}
+
+#card4{
+    background-color: cadetblue;
+    padding: 5px;
+    margin: 10px;
+}
+
+#card5{
+    background-color: cadetblue;
+    padding: 5px;
+    margin: 10px;
+    margin-right: 25px;
+}
