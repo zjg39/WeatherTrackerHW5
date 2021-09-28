@@ -32,22 +32,8 @@ function storeCity(currentCityName){
         cityArray.unshift(currentCityName);
     } localStorage.setItem('arrayCity', JSON.stringify(cityArray))
     console.log(cityArray);
-    while (cityArray.length > 8){
-        cityArray = JSON.parse(localStorage.getItem('arrayCity'));
-        cityArray.pop();
-        localStorage.setItem('arrayCity', JSON.stringify(cityArray))
-    } 
-    if (cityArray != null) {
-
-    } else {
-        for (i = 0; i < cityArray.length; i++){
-            var searchedStore = cityArray[i];
-            var searchedButton = $(<button></button>).addClass('searchResults');
-            searchedButton.appendTo(cityList[i]);
-            searchedButton.append(searchedStore);
-        }
     }
-}
+
 
 
 
