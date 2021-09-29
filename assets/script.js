@@ -37,21 +37,33 @@ function storeCity(currentCityName){
 }
 
 function limitList(){
-    debugger
     cityArray = JSON.parse(localStorage.getItem('storedCities'));
     if (cityArray != null){
         if (cityArray.length >= 8){
             cityArray.pop()
         }
     }
-    // if (cityArray == null){
-        for (i = 0; i < cityArray.length; i++){
-            var searchedList = $('#cityList');
-            var storedCities = JSON.parse(localStorage.getItem(storedCities))
-            storedCities.appendTo(searchedList); 
+
+        var storedCities = JSON.parse(localStorage.getItem('storedCities'))
+        for (i = 0; i < storedCities.length; i++){
+            // var searchedList = $('#cityList');
+            var searchedButtons = document.createElement('button');
+            searchedButtons.setAttribute('data-previous', storedCities[i])
+            searchedButtons.innerHTML = storedCities[i];
+            document.querySelector('#cityList').append(searchedButtons);
+            searchedButtons.onclick = createButton();
+            }
         }
-    }
-// }
+
+function createButton(){
+    document.createElement('button').classList.add('previousSearches');
+    document.querySelector('#cityList').append(searchedButtons);
+    $('.previousSearches').on('click', function(event){
+        event.target.textContent();
+        var city = event.target;
+        console.log(city);
+    })
+}
 
 // Dashboard display
 
@@ -62,10 +74,14 @@ function pullLatLonData(l){
     currentCityTemp = l.main.temp;
     currentCityWind = l.wind.speed;
     currentCityHumidity = l.main.humidity;
+    var unixDate = l.dt;
+    var dateObject = new Date(unixDate*1000);
+    var date = dateObject.toLocaleDateString();
     $('.currentCityTitle').text(currentCityName);
     $('#currentTemp').text(currentCityTemp);
     $('#currentWind').text(currentCityWind);
     $('#currentHumidity').text(currentCityHumidity);
+    $('#date').text(date);
     forecastWeatherData(lat, lon);
     storeCity(currentCityName);
 }
@@ -85,6 +101,7 @@ function uviChange(change){
 
 function fiveDayForecast(p){
     card.each(function(x){
+        var dateNow = moment.unix(p.daily[x+1].dt).format('MM/DD/YYYY');
         var tempHigh = p.daily[x+1].temp.max + ' ºF';
         var tempLow = p.daily[x+1].temp.min + ' ºF';
         var icon = p.daily[x+1].weather[0].icon;
@@ -96,6 +113,7 @@ function fiveDayForecast(p){
         $(this).children().children('.cardWind').text(wind);
         $(this).children().children('.cardHumidity').text(humidity);
         $(this).children('.cardFavicon').attr('src', iconAddress);
+        $(this).children('.cardDate').text(dateNow);
     })
 }
 
@@ -127,6 +145,3 @@ function forecastWeatherData(lat, lon){
         uviChange(Response);
     })
 }
-
-// Init();
-

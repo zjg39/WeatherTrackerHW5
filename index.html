@@ -22,13 +22,13 @@
                 <input id="searchBar" placeholder="Enter city name here" class="col-sm-4 text-center">
                 <button id="searchButton">Search</button>
                 <hr class="line">
-                <ul id="cityList">
+                <section id="cityList">
 
-                </ul>
+                </section>
             </div>
                     <div class="cityforecast col-sm-9">
                         <div class="col" id="dashboard">
-                            <h3 class="currentCityTitle">Title</h3>
+                            <h3 class="currentCityTitle">Title <span id="date"></span></h3>
                                 <p id="currentCityTemp">Current Temp: <span id="currentTemp"></span> ºF</p>
                                 <p id="currentCityWind">Wind: <span id="currentWind"></span> MPH</p>
                                 <p id="currentCityHumidity">Humidity: <span id="currentHumidity"></span>%</p>
@@ -37,7 +37,7 @@
                         <br>
                         <div class="row" id="cardRow">
                             <div class="col-sm tomorrowCard" id="card1">
-                                <h4 id="card1Date"></h4>
+                                <h4 class="cardDate"></h4>
                                 <img class="cardFavicon">
                                 <p>High Temp: <span class="cardTempHigh"></span></p>
                                 <p>Low Temp: <span class="cardTempLow"></span></p>
@@ -45,7 +45,7 @@
                                 <p>Humidity: <span class="cardHumidity"></span></p>
                             </div>
                             <div class="col-sm tomorrowCard" id="card2">
-                                <h4 id="card2Date"></h4>
+                                <h4 class="cardDate"></h4>
                                 <img class="cardFavicon">
                                 <p>High Temp: <span class="cardTempHigh"></span></p>
                                 <p>Low Temp: <span class="cardTempLow"></span></p>
@@ -53,7 +53,7 @@
                                 <p>Humidity: <span class="cardHumidity"></span></p>
                             </div>
                             <div class="col-sm tomorrowCard" id="card3">
-                                <h4 id="card3Date"></h4>
+                                <h4 class="cardDate"></h4>
                                 <img class="cardFavicon">
                                 <p>High Temp: <span class="cardTempHigh"></span></p>
                                 <p>Low Temp: <span class="cardTempLow"></span></p>
@@ -61,7 +61,7 @@
                                 <p>Humidity: <span class="cardHumidity"></span></p>
                             </div>
                             <div class="col-sm tomorrowCard" id="card4">
-                                <h4 id="card4Date"></h4>
+                                <h4 class="cardDate"></h4>
                                 <img class="cardFavicon">
                                 <p>High Temp: <span class="cardTempHigh"></span></p>
                                 <p>Low Temp: <span class="cardTempLow"></span></p>
@@ -69,7 +69,7 @@
                                 <p>Humidity: <span class="cardHumidity"></span></p>
                             </div>
                             <div class="col-sm tomorrowCard" id="card5">
-                                <h4 id="card5Date"></h4>
+                                <h4 class="cardDate"></h4>
                                 <img class="cardFavicon">
                                 <p>High Temp: <span class="cardTempHigh"></span></p>
                                 <p>Low Temp: <span class="cardTempLow"></span></p>
@@ -80,9 +80,9 @@
                 </div>
             </div>
         </div>
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+        <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
         <script src="./assets/script.js"></script>
     </body>
 </html>
