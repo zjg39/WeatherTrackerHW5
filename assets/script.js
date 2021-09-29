@@ -51,11 +51,14 @@ function limitList(){
             searchedButtons.setAttribute('data-previous', storedCities[i])
             searchedButtons.innerHTML = storedCities[i];
             document.querySelector('#cityList').append(searchedButtons);
-            searchedButtons.onclick = createButton();
+            searchedButtons.on('click', function(){
+                
+            });
             }
-        }
+        
 
-function createButton(){
+// function createButton(){
+    console.log("was clicked")
     document.createElement('button').classList.add('previousSearches');
     document.querySelector('#cityList').append(searchedButtons);
     $('.previousSearches').on('click', function(event){
@@ -63,8 +66,8 @@ function createButton(){
         var city = event.target;
         console.log(city);
     })
+// }
 }
-
 // Dashboard display
 
 function pullLatLonData(l){
@@ -74,16 +77,18 @@ function pullLatLonData(l){
     currentCityTemp = l.main.temp;
     currentCityWind = l.wind.speed;
     currentCityHumidity = l.main.humidity;
-    var unixDate = l.dt;
-    var dateObject = new Date(unixDate*1000);
-    var date = dateObject.toLocaleDateString();
+    // var dateNowTitle = moment.unix(l.daily[0].dt).format('MM/DD/YYYY');
+    // var unixDate = l.dt;
+    // var dateObject = new Date(unixDate*1000);
+    // var date = dateObject.toLocaleDateString();
     $('.currentCityTitle').text(currentCityName);
     $('#currentTemp').text(currentCityTemp);
     $('#currentWind').text(currentCityWind);
     $('#currentHumidity').text(currentCityHumidity);
-    $('#date').text(date);
+    // $('#date').text(date);
     forecastWeatherData(lat, lon);
     storeCity(currentCityName);
+    // $('.titleDate').text(dateNowTitle);
 }
 
 // UVI for Dashboard 
